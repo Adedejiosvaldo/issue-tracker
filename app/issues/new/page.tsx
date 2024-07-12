@@ -9,7 +9,6 @@ const NewIssuePage = () => {
     <div className="max-w-xl space-y-4">
       <TextField.Root placeholder="Title" />
       <TextArea placeholder="Descriptioon" />
-
       <Button>
         <Link href="">Submit New Issue</Link>
       </Button>
