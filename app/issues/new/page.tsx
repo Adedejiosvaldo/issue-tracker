@@ -12,6 +12,7 @@ import { MdError } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
 import IssueSchema from "@/app/ValidationSchemas";
 import { z } from "zod";
+import ErrorMessage from "@/app/components/ErrorMessage";
 
 type IssueForm = z.infer<typeof IssueSchema>;
 
@@ -53,8 +54,8 @@ const NewIssuePage = () => {
           }
         })}
       >
-        <TextField.Root placeholder="Title" as="p" {...register("title")} />
-        {errors.title && <Text color="red">{errors.title.message}</Text>}
+        <TextField.Root placeholder="Title" {...register("title")} />
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
         <Controller
           name="description"
@@ -63,11 +64,8 @@ const NewIssuePage = () => {
             <SimpleMDE placeholder="Description" {...field} />
           )}
         ></Controller>
-        {errors.description && (
-          <Text color="red" as="p">
-            {errors.description.message}
-          </Text>
-        )}
+
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
         <Button className="">Submit New Issue</Button>
       </form>
     </div>
